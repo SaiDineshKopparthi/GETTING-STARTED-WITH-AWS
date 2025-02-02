@@ -64,12 +64,7 @@ resource "aws_dynamodb_table" "my_table" {
 
 # S3 Bucket
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = "my-serverless-bucket"
-}
-
-resource "aws_s3_bucket_acl" "my_bucket_acl" {
-  bucket = aws_s3_bucket.my_bucket.id
-  acl    = "private"
+  bucket = "my-serverless-bucket-42224"
 }
 
 # SNS Topic
@@ -136,8 +131,8 @@ resource "aws_iam_policy" "lambda_custom_policy" {
           "s3:ListBucket"
         ]
         Resource = [
-          "arn:aws:s3:::my-serverless-bucket",
-          "arn:aws:s3:::my-serverless-bucket/*"
+          "arn:aws:s3:::my-serverless-bucket-42224",
+          "arn:aws:s3:::my-serverless-bucket-42224/*"
         ]
       },
       {
